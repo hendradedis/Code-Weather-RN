@@ -1,0 +1,9 @@
+export const WIND = 'Wind: ';
+export const HUMIDITY = 'Humidity: ';
+export const PRESSURE = 'Pressure: ';
+export const VISIBILITY = 'Visibility: ';
+export const SEA_LEVEL = 'Sea level: ';
+export const GRANDLEVEL = 'Grand Level: ';
+export const CITIES = 'cities: ';
+export const SEARCH_CITIES = 'Search Cities';
+export const WARNING_TEXTINPUT = 'Silahkan tulis Dahulu';
