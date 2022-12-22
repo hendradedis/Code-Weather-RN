@@ -12,11 +12,11 @@ export const wordCapitalCase = (wordCapital: any): any => {
   return wordCapital[0]?.toUpperCase() + wordCapital?.substring(1);
 };
 
-export const convertToKM = (wordCapital: any) => {
+export const convertToKM = (wordCapital: number): number => {
   return wordCapital / 1000;
 };
 
-export const convertToCelcius = (wordCelcius: any) => {
+export const convertToCelcius = (wordCelcius: number): string => {
   const convertCelcius = wordCelcius - 273;
   return convertCelcius?.toFixed(1);
 };
@@ -27,4 +27,8 @@ export const unixConvert = (date: any) => {
 
 export const codeIcon = (code: any) => {
   return code;
+};
+
+export const replaceAllDuplicateLineBreaks = (sentence: string): string => {
+  return sentence.replace(/\\n/g, '\n');
 };

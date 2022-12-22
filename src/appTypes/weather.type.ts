@@ -39,7 +39,7 @@ export interface ISyc {
 
 export interface IWeather {
   coord?: ICordinat;
-  weather?: IWeatherMain[] | undefined;
+  weather?: IWeatherMain[];
   base?: string;
   main?: IMainContent;
   visibility?: number;
