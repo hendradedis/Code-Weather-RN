@@ -31,7 +31,7 @@ const IntroScreen = (): React.ReactElement => {
   React.useEffect(() => {
     setTimeout(() => {
       getWeatherLontitude();
-    }, 1000);
+    }, 1500);
   }, [location]);
 
   React.useEffect(() => {

@@ -1,5 +1,11 @@
 import 'react-native';
-import {convertToKM, wordCapitalCase, wordToLowerCase} from '.';
+import {
+  convertToCelcius,
+  convertToKM,
+  replaceAllDuplicateLineBreaks,
+  wordCapitalCase,
+  wordToLowerCase,
+} from '.';
 
 it('lowerCaseFirstChar works well', () => {
   expect(wordToLowerCase('LoremIpsumDolorSitAmet')).toEqual(
@@ -13,4 +19,21 @@ it('wordCapitalCase works well', () => {
 
 it('convertToKM works well', () => {
   expect(convertToKM(1000)).toEqual(10);
+});
+
+it('convertToCelcius works well', () => {
+  expect(convertToCelcius(300)).toBe(27);
+});
+
+it('convertToCelcius should return 27.0 when given 300', () => {
+  expect(convertToCelcius(300)).toEqual(27.0);
+});
+
+it('replaceAll works well', () => {
+  expect(replaceAllDuplicateLineBreaks('Test \\nUtil')).toStrictEqual(
+    'Test \nUtil',
+  );
+  expect(replaceAllDuplicateLineBreaks('Test \\n\\nUtil')).toStrictEqual(
+    'Test \n\nUtil',
+  );
 });

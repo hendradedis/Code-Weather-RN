@@ -5,7 +5,7 @@ export const wordToLowerCase = (lowerWord: any): any => {
 };
 
 export const dateHourandMinute = (date: any): any => {
-  return moment(date).format('HH:mm');
+  return moment(date).format('h:mm');
 };
 
 export const wordCapitalCase = (wordCapital: any): any => {
