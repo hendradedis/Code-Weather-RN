@@ -1,26 +1,10 @@
-export interface IWeather {
-  coord?: ICordinat;
-  weather: IWeatherMain[];
-  base?: string;
-  main?: IMainContent;
-  visibility: number;
-  wind: IWind;
-  clouds: IClouds;
-  dt: number;
-  sys: ISyc;
-  timezone: number;
-  id: number;
-  name: string;
-  cod: number;
-}
-
 export interface ICordinat {
   lon?: number;
   lat?: number;
 }
 
 export interface IWeatherMain {
-  id: number;
+  id?: number;
   main?: string;
   description?: string;
   icon?: string;
@@ -49,6 +33,27 @@ export interface IClouds {
 
 export interface ISyc {
   country?: string;
-  sunrise: number;
-  sunset: number;
+  sunrise?: number;
+  sunset?: number;
+}
+
+export interface IWeather {
+  coord?: ICordinat;
+  weather?: IWeatherMain[] | undefined;
+  base?: string;
+  main?: IMainContent;
+  visibility?: number;
+  wind?: IWind;
+  clouds: IClouds;
+  dt?: number;
+  sys?: ISyc;
+  timezone?: number;
+  id?: number;
+  name?: string;
+  cod?: number;
+}
+
+export interface IWeatherApp {
+  dataWeatherLonglan?: IWeather;
+  dataWeatherCities?: IWeather;
 }

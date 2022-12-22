@@ -3,22 +3,23 @@ import {Text} from 'react-native';
 import styles from './styles';
 import Layouts from '../../../../components/Layouts';
 import GlobalStyle from '../../../../components/Globalstyle/styles';
-import {CITIES} from '../../../../constants/weather.const';
-import {wordCapitalCase} from '../../../../utils/common';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../../../store';
 
-const Cities = (): React.ReactElement => {
+const CloudStatus = (): React.ReactElement => {
   const {dataWeatherLonglan} = useSelector(
     (state: RootState) => state?.weather,
   );
-  const citiesName = wordCapitalCase(dataWeatherLonglan?.name);
   return (
     <Layouts style={styles.container}>
-      <Text style={GlobalStyle.styles.textNormalWhite}>{CITIES}</Text>
-      <Text style={GlobalStyle.styles.textWhiteBold}>{citiesName}</Text>
+      <Text style={GlobalStyle.styles.textWhiteBold}>
+        {dataWeatherLonglan?.weather[0]?.main}
+      </Text>
+      <Text style={GlobalStyle.styles.textNormalWhite}>
+        {dataWeatherLonglan?.weather[0]?.description}
+      </Text>
     </Layouts>
   );
 };
 
-export default Cities;
+export default CloudStatus;

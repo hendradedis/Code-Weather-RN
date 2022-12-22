@@ -3,14 +3,17 @@ import {API, BASE_URL} from './api';
 export const APIClient = {
   async get<Type>(resource: string, path?: string): Promise<Type> {
     try {
-      console.info('GET', `${BASE_URL}/${resource}/${path}`);
+      // console.info('GET', `${BASE_URL}${resource}/${path}`);
+      console.info('GET', `${BASE_URL}${resource}`);
       let url = ''; // some url here
 
       if (path) {
-        url = `${resource}/${path}`;
+        // url = `${resource}/${path}`;
+        url = `${resource}`;
       } else {
         url = resource;
       }
+      console.info('urlku', url);
 
       return await API.get(url);
     } catch (err: any) {

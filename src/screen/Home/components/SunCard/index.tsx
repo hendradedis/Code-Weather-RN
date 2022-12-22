@@ -4,20 +4,22 @@ import {Image, Text} from 'react-native';
 import styles from './styles';
 import Layouts from '../../../../components/Layouts';
 import GlobalStyle from '../../../../components/Globalstyle/styles';
-import {WEATHER_DUMMY} from '../../../../constants/dummyApi';
-import {IWeather} from '../../../../appTypes/weather.type';
 import moment from 'moment';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../store';
 const sunriceIcon = require('../../../../assets/image/sunrice.png');
 const sunsetIcon = require('../../../../assets/image/sunset.png');
-// import {dateHourandMinute} from '../../../../utils/common';
+import {dateHourandMinute} from '../../../../utils/common';
 
 const SunCard = (): React.ReactElement => {
-  const [dataWeather, setDataWeather] = React.useState<IWeather>(WEATHER_DUMMY);
+  const {dataWeatherLonglan} = useSelector(
+    (state: RootState) => state?.weather,
+  );
 
-  const timeSun = moment.unix(dataWeather?.sys?.sunrise);
-  const timeSunSet = moment.unix(dataWeather?.sys?.sunset);
-  const sunriceTime = timeSun.format('h:mm');
-  const sunsetTime = timeSunSet.format('h:mm');
+  const timeSun = moment.unix(dataWeatherLonglan?.sys?.sunrise);
+  const timeSunSet = moment.unix(dataWeatherLonglan?.sys?.sunset);
+  const sunriceTime = dateHourandMinute(timeSun);
+  const sunsetTime = dateHourandMinute(timeSunSet);
 
   return (
     <Layouts style={styles.container}>

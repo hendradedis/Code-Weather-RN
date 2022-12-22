@@ -1,5 +1,3 @@
-// market
-export const MARKET_TRADING = 'MARKET_TRADING';
-
-//Price change
-export const PRICE_CHANGE = 'PRICE_CHANGE';
+// Weather opp
+export const CITIES_API = 'CITIES_API';
+export const LONGTITUDE_API = 'LONGTITUDE_API';

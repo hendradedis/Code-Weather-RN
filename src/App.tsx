@@ -11,22 +11,26 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {RecoilRoot} from 'recoil';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import RootNavigation from './navigator/RootNavigation';
 import {navigationRef} from './utils/navigators';
+import {Provider as StoreProvider} from 'react-redux';
+import {PersistGate} from 'redux-persist/lib/integration/react';
+import {persistor, store} from './store';
 
 const App = (): React.ReactElement => {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot override={false}>
-        <SafeAreaProvider>
-          <NavigationContainer ref={navigationRef}>
-            <RootNavigation />
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </RecoilRoot>
+      <StoreProvider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <SafeAreaProvider>
+            <NavigationContainer ref={navigationRef}>
+              <RootNavigation />
+            </NavigationContainer>
+          </SafeAreaProvider>
+        </PersistGate>
+      </StoreProvider>
     </QueryClientProvider>
   );
 };

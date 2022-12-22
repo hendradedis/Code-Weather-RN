@@ -11,7 +11,7 @@ interface IStyles {
 
 const styles = StyleSheet.create<IStyles>({
   formInputContainer: {
-    borderWidth: 0.7,
+    borderWidth: 1,
     marginHorizontal: moderateScale(16),
     borderRadius: moderateScale(8),
     paddingHorizontal: moderateScale(12),
