@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import {Text} from 'react-native';
+import {useSelector} from 'react-redux';
 import {IWeather} from '../../../../appTypes/weather.type';
 import GlobalStyle from '../../../../components/Globalstyle/styles';
 import Layouts from '../../../../components/Layouts';
@@ -13,19 +14,22 @@ import {
   VISIBILITY,
   WIND,
 } from '../../../../constants/weather.const';
+import {RootState} from '../../../../store';
 import {convertToKM} from '../../../../utils/common';
 import styles from './styles';
 
 const WeatherContent = (): React.ReactElement => {
-  const [dataWeather, setDataWeather] = React.useState<IWeather>(WEATHER_DUMMY);
-  const visibility = convertToKM(dataWeather?.visibility);
+  const {dataWeatherLonglan} = useSelector(
+    (state: RootState) => state?.weather,
+  );
+  const visibility = convertToKM(dataWeatherLonglan?.visibility);
   return (
     <Layouts style={styles.container}>
       <Layouts style={styles.contentBox}>
         <Layouts style={styles.card}>
           <Text style={GlobalStyle.styles.textLitleWhite}>{WIND}</Text>
           <Text style={GlobalStyle.styles.textLitleWhite}>
-            {`${dataWeather?.wind?.speed}m/s SW`}
+            {`${dataWeatherLonglan?.wind?.speed}m/s SW`}
           </Text>
         </Layouts>
         <Layouts style={styles.card}>
@@ -33,14 +37,14 @@ const WeatherContent = (): React.ReactElement => {
           <Text
             style={
               GlobalStyle.styles.textLitleWhite
-            }>{`${dataWeather?.main?.humidity}%`}</Text>
+            }>{`${dataWeatherLonglan?.main?.humidity}%`}</Text>
         </Layouts>
         <Layouts style={styles.card}>
           <Text style={GlobalStyle.styles.textLitleWhite}>{PRESSURE}</Text>
           <Text
             style={
               GlobalStyle.styles.textLitleWhite
-            }>{`${dataWeather?.main?.pressure} hPa`}</Text>
+            }>{`${dataWeatherLonglan?.main?.pressure} hPa`}</Text>
         </Layouts>
       </Layouts>
       <Layouts style={styles.contentBoxLeft}>
@@ -54,13 +58,13 @@ const WeatherContent = (): React.ReactElement => {
         <Layouts style={styles.card}>
           <Text style={GlobalStyle.styles.textLitleWhite}>{SEA_LEVEL}</Text>
           <Text style={GlobalStyle.styles.textLitleWhite}>{`${
-            dataWeather?.main?.sea_level || 0
+            dataWeatherLonglan?.main?.sea_level || 0
           } hPa`}</Text>
         </Layouts>
         <Layouts style={styles.card}>
           <Text style={GlobalStyle.styles.textLitleWhite}>{GRANDLEVEL}</Text>
           <Text style={GlobalStyle.styles.textLitleWhite}>{`${
-            dataWeather?.main?.grnd_level || 0
+            dataWeatherLonglan?.main?.grnd_level || 0
           } hPa`}</Text>
         </Layouts>
       </Layouts>

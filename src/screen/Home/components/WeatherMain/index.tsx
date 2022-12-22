@@ -4,16 +4,18 @@ import {Image, Text} from 'react-native';
 import styles from './style';
 import GlobalStyle from '../../../../components/Globalstyle/styles';
 import Layouts from '../../../../components/Layouts';
-import {WEATHER_DUMMY} from '../../../../constants/dummyApi';
-import {IWeather} from '../../../../appTypes/weather.type';
 import {convertToCelcius} from '../../../../utils/common';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../store';
 
 const WeatherMain = (): React.ReactElement => {
-  const [dataWeather, setDataWeather] = React.useState<IWeather>(WEATHER_DUMMY);
-  const codeIcons = dataWeather?.weather[0].icon;
+  const {dataWeatherLonglan} = useSelector(
+    (state: RootState) => state?.weather,
+  );
+  const codeIcons = dataWeatherLonglan?.weather[0]?.icon;
   const iconWeather = `https://openweathermap.org/img/w/${codeIcons}.png`;
-  const tempCelcius = convertToCelcius(dataWeather?.main?.temp);
-  const tempFeels = convertToCelcius(dataWeather?.main?.feels_like);
+  const tempCelcius = convertToCelcius(dataWeatherLonglan?.main?.temp);
+  const tempFeels = convertToCelcius(dataWeatherLonglan?.main?.feels_like);
   return (
     <Layouts style={styles.container}>
       <Image style={styles.imageStyle} source={{uri: iconWeather}} />

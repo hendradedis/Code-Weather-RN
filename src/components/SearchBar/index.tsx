@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {Alert, KeyboardAvoidingView, TextInput, ViewStyle} from 'react-native';
-import {WARNING_TEXTINPUT} from '../../constants/weather.const';
-import {wordToLowerCase} from '../../utils/common';
+import {useDispatch} from 'react-redux';
+import {fetchWeatherCities} from '../../service/sample/Queries/useFetchWeatherCities';
+import {setDataWeatherLonglan} from '../../store/Weather';
 import Layouts from '../Layouts';
 import styles from './styles';
 
@@ -20,15 +21,21 @@ const SearchBar = ({
   marginTop,
   keyboardType = 'default',
 }: IFormInputProps) => {
-  const [textValue, setTextValue] = React.useState<string>('');
+  const dispatch = useDispatch();
+  const [citiesValue, setCitiesValue] = React.useState<string>('');
 
-  const onPressSearch = () => {
-    if (textValue.length > 0) {
-      Alert.alert(wordToLowerCase(textValue));
+  const onPressSearch = async () => {
+    if (citiesValue.length > 0) {
+      const response = await fetchWeatherCities(citiesValue);
+      if (!response) {
+        Alert.alert('city not found');
+      } else {
+        dispatch(setDataWeatherLonglan(response));
+      }
     } else {
-      Alert.alert(WARNING_TEXTINPUT);
+      Alert.alert('city not found');
     }
-    setTextValue('');
+    setCitiesValue('');
   };
   return (
     <KeyboardAvoidingView
@@ -37,10 +44,10 @@ const SearchBar = ({
         <TextInput
           keyboardType={keyboardType}
           style={styles.textInput}
-          value={textValue}
+          value={citiesValue}
           placeholder={placeholder}
           onChangeText={text => {
-            setTextValue(text);
+            setCitiesValue(text);
           }}
           onSubmitEditing={() => {
             onPressSearch();
