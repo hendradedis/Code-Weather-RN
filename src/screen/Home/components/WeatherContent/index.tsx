@@ -22,7 +22,7 @@ const WeatherContent = (): React.ReactElement => {
   const {dataWeatherLonglan} = useSelector(
     (state: RootState) => state?.weather,
   );
-  const visibility = convertToKM(dataWeatherLonglan?.visibility);
+  const visibility = convertToKM(dataWeatherLonglan?.visibility!);
   return (
     <Layouts style={styles.container}>
       <Layouts style={styles.contentBox}>
