@@ -9,15 +9,15 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../../../store';
 const sunriceIcon = require('../../../../assets/image/sunrice.png');
 const sunsetIcon = require('../../../../assets/image/sunset.png');
-import {dateHourandMinute} from '../../../../utils/common';
+import {dateHourandMinute, unixConvert} from '../../../../utils/common';
 
 const SunCard = (): React.ReactElement => {
   const {dataWeatherLonglan} = useSelector(
     (state: RootState) => state?.weather,
   );
 
-  const timeSun = moment.unix(dataWeatherLonglan?.sys?.sunrise);
-  const timeSunSet = moment.unix(dataWeatherLonglan?.sys?.sunset);
+  const timeSun = unixConvert(dataWeatherLonglan?.sys?.sunrise);
+  const timeSunSet = unixConvert(dataWeatherLonglan?.sys?.sunset);
   const sunriceTime = dateHourandMinute(timeSun);
   const sunsetTime = dateHourandMinute(timeSunSet);
 

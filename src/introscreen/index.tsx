@@ -15,7 +15,24 @@ const IntroScreen = (): React.ReactElement => {
   let longtitude = location?.coords?.longitude || 106.774124;
   let latitude = location?.coords?.latitude || -6.121435;
   const navigation = useNavigation<any>();
-  const {data, isLoading} = useFetchWeatherLontitude(latitude, longtitude);
+  const {refetch: refetchWeatherLontitude} = useFetchWeatherLontitude(
+    latitude,
+    longtitude,
+    {
+      enabled: true,
+    },
+  );
+
+  const getWeatherLontitude = async () => {
+    const {data: weatherData}: any = await refetchWeatherLontitude();
+    dispatch(setDataWeatherLonglan(weatherData));
+  };
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      getWeatherLontitude();
+    }, 1000);
+  }, [location]);
 
   React.useEffect(() => {
     (async () => {
@@ -27,11 +44,6 @@ const IntroScreen = (): React.ReactElement => {
     })();
   }, []);
 
-  React.useEffect(() => {
-    if (!isLoading) {
-      dispatch(setDataWeatherLonglan(data));
-    }
-  }, [isLoading]);
   return (
     <SafeAreaView style={styles.container}>
       <Image

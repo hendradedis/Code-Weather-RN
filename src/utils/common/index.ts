@@ -20,3 +20,11 @@ export const convertToCelcius = (wordCelcius: any) => {
   const convertCelcius = wordCelcius - 273;
   return convertCelcius?.toFixed(1);
 };
+
+export const unixConvert = (date: any) => {
+  return moment.unix(date);
+};
+
+export const codeIcon = (code: any) => {
+  return code;
+};
