@@ -34,6 +34,7 @@ $ npm install or (if using yarn) yarn install
 $ cd ios
 $ pod install
 $ cd ..
+$ git checkout master
 $ npx `npx react-native run-android` for Android run
 $ npx `npx react-native run-ios for` Ios run
 
