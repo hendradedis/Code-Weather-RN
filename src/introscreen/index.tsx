@@ -4,7 +4,7 @@ import {SafeAreaView, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import {requestLocationPermission} from '../utils/locationUtils';
-import {useFetchWeatherLontitude} from '../service/sample';
+import {useFetchWeatherLontitude} from '../service/weather';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../store';
 import {setDataWeatherLonglan} from '../store/Weather';

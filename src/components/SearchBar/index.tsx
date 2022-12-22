@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Alert, KeyboardAvoidingView, TextInput, ViewStyle} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {fetchWeatherCities} from '../../service/sample/Queries/useFetchWeatherCities';
+import {fetchWeatherCities} from '../../service/weather/Queries/useFetchWeatherCities';
 import {setDataWeatherLonglan} from '../../store/Weather';
 import Layouts from '../Layouts';
 import styles from './styles';
