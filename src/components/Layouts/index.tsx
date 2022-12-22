@@ -6,7 +6,6 @@ export interface ILayout extends ViewProps {
   testID?: string;
   children?: React.ReactNode;
   style?: ViewStyle | ViewStyle[];
-  trasparentHeader?: boolean;
 }
 interface IOptions {
   statusBars?: string;
@@ -25,13 +24,10 @@ const Layout = ({
   testID,
   children,
   style,
-  trasparentHeader,
   ...viewProps
 }: ILayout): React.ReactElement => (
   <View testID={testID} style={[defaultStyles.layout, style]} {...viewProps}>
-    <MyStatusBar
-      backgroundColor={trasparentHeader === true ? 'transparent' : 'white'}
-    />
+    <MyStatusBar backgroundColor={'transparent'} />
     {children}
   </View>
 );
