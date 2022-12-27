@@ -10,7 +10,7 @@
 <img src="https://user-images.githubusercontent.com/31977125/209122442-ddebf93d-5465-4087-a1f0-99f2bdd0d61a.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" /><img src="https://user-images.githubusercontent.com/31977125/209122424-99c0345b-6d44-4ac3-a0da-6ada680516ef.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" /><img src="https://user-images.githubusercontent.com/31977125/209124011-b6adff1b-8df6-4111-a808-1d1a371b11cb.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
 
 
-the experiment is to build an app library using https://openlibrary.org/subjects, it's quite fun, if you want to try it on your local, you can clone this repo
+the experiment is to build an app weather using https://openweathermap.org/api, it's quite fun, if you want to try it on your local, you can clone this repo
 ## Feature On Weather App
 
 - we can get wether base on current Location
