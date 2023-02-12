@@ -3,7 +3,14 @@ import {IWeather, IWeatherApp} from '../../appTypes/weather.type';
 
 const defaultObject: IWeather = {
   coord: {lon: 0, lat: 0},
-  weather: [],
+  weather: [
+    {
+      id: 804,
+      main: 'Clouds',
+      description: 'Rain clouds',
+      icon: '04n',
+    },
+  ],
   base: '',
   main: {
     temp: 0,

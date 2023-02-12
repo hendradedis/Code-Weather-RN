@@ -33,6 +33,7 @@ it('replaceAll works well', () => {
   expect(replaceAllDuplicateLineBreaks('Test \\nUtil')).toStrictEqual(
     'Test \nUtil',
   );
+
   expect(replaceAllDuplicateLineBreaks('Test \\n\\nUtil')).toStrictEqual(
     'Test \n\nUtil',
   );
